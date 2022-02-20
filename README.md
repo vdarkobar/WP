@@ -27,7 +27,7 @@ WordPress Port Number.
 ### Clone WordPress Git Repository:
 ```
 RED='\033[0;31m'; echo -ne "${RED}Enter directory name: "; read DIR; \
-mkdir -p "$DIR"; cd "$DIR" && git clone https://github.com/vdarkobar/npm.git . && \
+mkdir -p "$DIR"; cd "$DIR" && git clone https://github.com/vdarkobar/WP.git . && \
 chmod +x setup.sh && \
 ./setup.sh
 ```
