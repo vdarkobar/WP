@@ -1,0 +1,58 @@
+version: '3.9'
+
+
+
+secrets:
+  mysql_root_password:
+    file: ./secrets/mysql_root_password.secret
+  wp_mysql_password:
+    file: ./secrets/wp_mysql_password.secret
+
+services:
+  db:
+    image: mariadb
+    container_name: wp-db # change for multiple instances
+    restart: always
+
+    networks:
+      - wp
+
+    volumes:
+      - ./db-data:/var/lib/mysql
+
+    secrets: 
+      - mysql_root_password
+      - wp_mysql_password
+
+    environment:
+      - TZ=$TZ
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql_root_password
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD_FILE=/run/secrets/wp_mysql_password
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress # change for multiple instances
+    restart: always
+
+    secrets:
+      - wp_mysql_password
+
+    networks:
+      - wp
+
+    depends_on:
+      - db
+
+    ports:
+      - $WPPORTN:80
+
+    environment:
+      - WORDPRESS_DB_HOST=db:3306
+      - WORDPRESS_DB_NAME=db
+      - WORDPRESS_DB_USER=dbuser
+      - WORDPRESS_DB_PASSWORD_FILE=/run/secrets/wp_mysql_password
+
+    volumes:
+      - ./html:/var/www/html
