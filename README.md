@@ -21,7 +21,7 @@ or:
 Time Zone and WordPress Port Number.
 ```
     
-### Clone WordPress Git Repository:
+### *Run this command*:
 ```
 RED='\033[0;31m'; echo -ne "${RED}Enter directory name: "; read DIR; \
 mkdir -p "$DIR"; cd "$DIR" && git clone https://github.com/vdarkobar/WP.git . && \
