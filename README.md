@@ -37,3 +37,6 @@ chmod +x setup.sh && \
 sudo docker logs -tf --tail="50" wordpress
 sudo docker logs -tf --tail="50" wp-db
 ```
+  
+### Follow <i><a href="https://github.com/vdarkobar/NPM/blob/main/shared/NC%20Additional%20Settings.md">this link</a></i> for important NextCloud settings.  
+  
