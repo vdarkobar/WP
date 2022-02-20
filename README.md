@@ -15,12 +15,7 @@ or:
 ```
 
 ---
-
-### Create Docker networks:
-```
-sudo docker network create wp
-sudo docker network create db
-```
+  
 ### Clone WordPress Git Repository:
 ```
 RED='\033[0;31m'; echo -ne "${RED}Enter directory name: "; read NAME; mkdir -p "$NAME"; \
