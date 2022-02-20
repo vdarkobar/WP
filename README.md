@@ -18,10 +18,7 @@ or:
   
 #### *Decide what you will use for*:
 ```
-Time Zone,
-Domain name,
-Subdomain (if planned),
-WordPress Port Number.
+Time Zone and WordPress Port Number.
 ```
     
 ### Clone WordPress Git Repository:
