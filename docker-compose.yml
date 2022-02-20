@@ -1,6 +1,9 @@
 version: '3.9'
 
-
+networks:
+  wp:
+    name: wp
+    driver: bridge
 
 secrets:
   mysql_root_password:
@@ -14,15 +17,15 @@ services:
     container_name: wp-db # change for multiple instances
     restart: always
 
+    secrets: 
+      - mysql_root_password
+      - wp_mysql_password
+
     networks:
       - wp
 
     volumes:
       - ./db-data:/var/lib/mysql
-
-    secrets: 
-      - mysql_root_password
-      - wp_mysql_password
 
     environment:
       - TZ=$TZ
