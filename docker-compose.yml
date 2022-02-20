@@ -10,7 +10,7 @@ secrets:
 
 services:
   db:
-    image: mariadb
+    image: mariadb:latest
     container_name: wp-db # change for multiple instances
     restart: always
 
