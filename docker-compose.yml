@@ -6,12 +6,15 @@ networks:
     driver: bridge
 
 secrets:
+
   mysql_root_password:
     file: ./secrets/mysql_root_password.secret
   wp_mysql_password:
     file: ./secrets/wp_mysql_password.secret
 
 services:
+
+  # MariaDB - The open source relational database.
   db:
     image: mariadb:latest
     container_name: wp-db # change for multiple instances
@@ -34,6 +37,7 @@ services:
       - MYSQL_USER=dbuser
       - MYSQL_PASSWORD_FILE=/run/secrets/wp_mysql_password
 
+  # WordPress - website builder.
   wordpress:
     image: wordpress:latest
     container_name: wordpress # change for multiple instances
@@ -59,3 +63,23 @@ services:
 
     volumes:
       - ./html:/var/www/html
+
+  # Watchtower - automating Docker container base image updates.
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: always
+
+    networks:
+      - wp
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    environment:
+      - TZ=$TZ
+      - WATCHTOWER_DEBUG=true
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_REMOVE_VOLUMES=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
+      - WATCHTOWER_SCHEDULE=0 30 5 * * * # Everyday at 5:30
