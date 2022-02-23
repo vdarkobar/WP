@@ -67,7 +67,7 @@ services:
   # Watchtower - automating Docker container base image updates.
   watchtower:
     image: containrrr/watchtower
-    container_name: watchtower
+    container_name: watchtower-wp
     restart: always
 
     networks:
