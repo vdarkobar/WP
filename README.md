@@ -9,7 +9,7 @@ Login to <a href="https://dash.cloudflare.com/">CloudFlare</a>, add *Subdomain* 
 ```
     CNAME | subdomain | @ (or example.com)
 ```
-#### *No need to add A record to put WordPress on your Root Domain (already set by Argo Tunnel), just skip it, including CNAME creation.*
+#### *No need to add A record to put WordPress on your Root Domain (already set by Argo Tunnel), just skip this step, including CNAME creation.*
   
 ---
   
