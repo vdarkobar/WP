@@ -5,18 +5,12 @@
   
 # WordPress
   
-Login to <a href="https://dash.cloudflare.com/">CloudFlare</a> and set Domain name, or Domain name and Subdomain for your WordPress.
-```
-    A | example.com | YOUR WAN IP
-```
-or:
-```
-    A | example.com | YOUR WAN IP
-```
+Login to <a href="https://dash.cloudflare.com/">CloudFlare</a>, add *Subdomain* for your *WordPress*. 
 ```
     CNAME | subdomain | @ (or example.com)
 ```
-
+#### *No need to add A record to put WordPress on your Root Domain (already set by Argo Tunnel), just skip it, including CNAME creation.*
+  
 ---
   
 #### *Decide what you will use for*:
